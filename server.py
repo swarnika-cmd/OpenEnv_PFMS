@@ -1,0 +1,24 @@
+import uvicorn
+from fastapi import FastAPI
+from env import PFMSEnv, Action
+
+app = FastAPI()
+_env = PFMSEnv()
+
+@app.post("/reset")
+async def reset():
+    result = await _env.reset()
+    return {"observation": result.observation.model_dump(), "info": {}}
+
+@app.post("/step")
+async def step(action: Action):
+    result = await _env.step(action)
+    return {
+        "observation": result.observation.model_dump(),
+        "reward": result.reward,
+        "done": result.done,
+        "info": {}
+    }
+
+if __name__ == "__main__":
+    uvicorn.run(app, host="0.0.0.0", port=7860)
