@@ -5,6 +5,10 @@ from env import PFMSEnv, Action
 app = FastAPI()
 _env = PFMSEnv()
 
+@app.get("/")
+async def root():
+    return {"status": "PFMS Environment is running! Use POST /reset and POST /step to interact."}
+
 @app.post("/reset")
 async def reset():
     result = await _env.reset()
