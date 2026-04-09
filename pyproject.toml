@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=45", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pfms_env"
+version = "0.1.0"
+description = "PFMS Environment for OpenEnv Hackathon"
+requires-python = ">=3.10"
+dependencies = [
+    "pydantic>=2.4.0",
+    "openenv-core",
+    "openai",
+    "fastapi",
+    "uvicorn"
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0"
+]
+
+[project.scripts]
+server = "server:app"
+
+[tool.setuptools]
+include-package-data = true
+packages = [""]
+package-dir = { "" = "." }
