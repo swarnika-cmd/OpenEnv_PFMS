@@ -39,6 +39,12 @@ async def state():
     return env.state.model_dump()
 
 
+@app.get("/grade")
+async def grade():
+    score = env.grade()
+    return {"task": env.state.task_name, "score": score}
+
+
 def main():
     uvicorn.run(app, host="0.0.0.0", port=7860)
 

@@ -1,6 +1,7 @@
 README.md
 client.py
 env.py
+graders.py
 inference.py
 models.py
 play.py

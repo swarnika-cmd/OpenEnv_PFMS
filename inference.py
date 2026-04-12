@@ -154,9 +154,9 @@ async def main() -> None:
 
         score = sum(rewards)
         if score > 0:
-            score = max(0.0, min(1.0, score))
+            score = max(0.01, min(0.99, score))
         else:
-            score = 0.0
+            score = 0.01  # Never exactly 0.0
 
         success = score >= SUCCESS_SCORE_THRESHOLD
 

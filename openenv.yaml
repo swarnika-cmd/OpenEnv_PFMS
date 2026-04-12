@@ -11,12 +11,18 @@ models:
   state: models:PFMSState
 client: client:PFMSEnv
 tasks:
-  - name: happy_path
+  - id: happy_path
+    name: happy_path
     difficulty: easy
     description: "Basic login, navigation, and fund transfer"
-  - name: traffic_spike
+    grader: "graders:grade_happy_path"
+  - id: traffic_spike
+    name: traffic_spike
     difficulty: medium
     description: "Handle 504 Gateway Timeouts with exponential backoff"
-  - name: lying_ui
+    grader: "graders:grade_traffic_spike"
+  - id: lying_ui
+    name: lying_ui
     difficulty: hard
     description: "UI lies about success - agent must independently verify in ledger"
+    grader: "graders:grade_lying_ui"

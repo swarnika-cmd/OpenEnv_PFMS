@@ -27,4 +27,4 @@ server = "server.app:main"
 include = ["pfms_env*", "server*"]
 
 [tool.setuptools]
-py-modules = ["models", "client", "env"]
+py-modules = ["models", "client", "env", "graders"]

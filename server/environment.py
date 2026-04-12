@@ -9,6 +9,7 @@ import uuid
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from models import PFMSAction, PFMSObservation, PFMSState
+from graders import grade as _grade_fn
 
 
 class PFMSEnvironment:
@@ -151,6 +152,13 @@ class PFMSEnvironment:
             if has_record and self._state.current_page == "ledger":
                 return True
         return False
+
+    def grade(self) -> float:
+        """
+        Return a normalized score for the current episode strictly in (0, 1).
+        Delegates to the task-specific grader.
+        """
+        return _grade_fn(self._state)
 
     async def close(self):
         pass
