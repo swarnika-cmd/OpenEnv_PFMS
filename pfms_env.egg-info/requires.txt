@@ -1,0 +1,8 @@
+pydantic>=2.4.0
+openenv-core
+openai
+fastapi
+uvicorn
+
+[dev]
+pytest>=8.0.0
