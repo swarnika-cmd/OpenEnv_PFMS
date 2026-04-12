@@ -5,24 +5,26 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "pfms_env"
 version = "0.1.0"
-description = "PFMS Environment for OpenEnv Hackathon"
+description = "PFMS Environment - A mock government financial portal for RL agent training via OpenEnv"
 requires-python = ">=3.10"
 dependencies = [
     "pydantic>=2.4.0",
     "openenv-core",
     "openai",
-    "fastapi",
-    "uvicorn"
+    "fastapi>=0.100.0",
+    "uvicorn[standard]",
 ]
 
 [project.optional-dependencies]
 dev = [
-    "pytest>=8.0.0"
+    "pytest>=8.0.0",
 ]
 
 [project.scripts]
 server = "server.app:main"
 
+[tool.setuptools.packages.find]
+include = ["pfms_env*", "server*"]
+
 [tool.setuptools]
-packages = ["server"]
-py-modules = ["env", "inference", "play"]
+py-modules = ["models", "client", "env"]

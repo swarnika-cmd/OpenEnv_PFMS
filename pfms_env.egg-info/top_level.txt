@@ -1,4 +1,4 @@
+client
 env
-inference
-play
+models
 server

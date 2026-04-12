@@ -5,6 +5,10 @@ colorFrom: blue
 colorTo: green
 sdk: docker
 app_port: 7860
+pinned: false
+tags:
+  - openenv
+  - agent-environment
 ---
 
 # 🏛️ OpenEnv: Mock PFMS Portal

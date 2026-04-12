@@ -1,12 +1,12 @@
 Metadata-Version: 2.4
 Name: pfms_env
 Version: 0.1.0
-Summary: PFMS Environment for OpenEnv Hackathon
+Summary: PFMS Environment - A mock government financial portal for RL agent training via OpenEnv
 Requires-Python: >=3.10
 Requires-Dist: pydantic>=2.4.0
 Requires-Dist: openenv-core
 Requires-Dist: openai
-Requires-Dist: fastapi
-Requires-Dist: uvicorn
+Requires-Dist: fastapi>=0.100.0
+Requires-Dist: uvicorn[standard]
 Provides-Extra: dev
 Requires-Dist: pytest>=8.0.0; extra == "dev"

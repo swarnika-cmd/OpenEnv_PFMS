@@ -1,9 +1,9 @@
-import asyncio
 import os
 import json
-from env import PFMSEnv, Action
+from models import PFMSAction as Action
+from server.environment import PFMSEnvironment as PFMSEnv
 
-async def main():
+def main():
     print("=========================================")
     print("  Welcome to the PFMS Mock Environment!  ")
     print("=========================================")
@@ -12,10 +12,10 @@ async def main():
     os.environ["PFMS_TASK"] = task
     
     env = PFMSEnv()
-    result = await env.reset()
+    result_obs = env.reset()
     
     print("\n--- NEW EPISODE STARTED ---")
-    print(f"Initial Observation:\n{json.dumps(result.observation.model_dump(), indent=2)}\n")
+    print(f"Initial Observation:\n{json.dumps(result_obs.model_dump(), indent=2)}\n")
     
     step = 0
     total_reward = 0.0
@@ -35,18 +35,19 @@ async def main():
             print(f"\n[!] Invalid JSON or Action format: {e}")
             continue
             
-        result = await env.step(action)
-        # OpenEnv usually returns numerical scalar or None
-        reward = result.reward if result.reward is not None else 0.0
+        result = env.step(action)
+        
+        reward = result.get("reward", 0.0)
         total_reward += reward
+        is_done = result.get("done", False)
         
         print("\n[ OBSERVED STATE ]")
         print(f"Reward this step: {reward}")
         print(f"Total Reward: {total_reward:.2f}")
-        print(f"Done: {result.done}")
-        print(f"Observation:\n{json.dumps(result.observation.model_dump(), indent=2)}")
+        print(f"Done: {is_done}")
+        print(f"Observation:\n{json.dumps(result['observation'], indent=2)}")
         
-        if result.done:
+        if is_done:
             print(f"\n=========================================")
             print(f"--- EPISODE FINISHED ---")
             print(f"Final Total Reward: {total_reward:.2f}")
@@ -54,4 +55,4 @@ async def main():
             break
 
 if __name__ == "__main__":
-    asyncio.run(main())
+    main()

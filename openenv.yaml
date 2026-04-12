@@ -1,6 +1,22 @@
 spec_version: 1
 name: pfms_env
+description: "Mock PFMS (Public Financial Management System) portal - RL environment with temporal backoffs and state inconsistencies"
 type: space
-runtime: fastapi
+runtime: docker
 app: server.app:app
 port: 7860
+models:
+  action: models:PFMSAction
+  observation: models:PFMSObservation
+  state: models:PFMSState
+client: client:PFMSEnv
+tasks:
+  - name: happy_path
+    difficulty: easy
+    description: "Basic login, navigation, and fund transfer"
+  - name: traffic_spike
+    difficulty: medium
+    description: "Handle 504 Gateway Timeouts with exponential backoff"
+  - name: lying_ui
+    difficulty: hard
+    description: "UI lies about success - agent must independently verify in ledger"

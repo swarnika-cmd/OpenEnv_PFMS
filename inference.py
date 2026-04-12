@@ -6,7 +6,8 @@ from typing import List, Optional
 
 from openai import OpenAI
 
-from env import Action as PFMSEnvAction, PFMSEnv
+from models import PFMSAction as PFMSEnvAction
+from server.environment import PFMSEnvironment as PFMSEnv
 
 HF_TOKEN = os.getenv("HF_TOKEN")
 LOCAL_IMAGE_NAME = os.getenv("LOCAL_IMAGE_NAME")

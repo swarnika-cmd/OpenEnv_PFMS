@@ -1,6 +1,8 @@
 README.md
+client.py
 env.py
 inference.py
+models.py
 play.py
 pyproject.toml
 pfms_env.egg-info/PKG-INFO
@@ -11,3 +13,4 @@ pfms_env.egg-info/requires.txt
 pfms_env.egg-info/top_level.txt
 server/__init__.py
 server/app.py
+server/environment.py

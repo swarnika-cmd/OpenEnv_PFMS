@@ -1,8 +1,8 @@
 pydantic>=2.4.0
 openenv-core
 openai
-fastapi
-uvicorn
+fastapi>=0.100.0
+uvicorn[standard]
 
 [dev]
 pytest>=8.0.0
