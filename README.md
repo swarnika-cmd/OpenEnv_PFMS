@@ -1,3 +1,12 @@
+---
+title: PFMS Env
+emoji: 🏛️
+colorFrom: blue
+colorTo: green
+sdk: docker
+app_port: 7860
+---
+
 # 🏛️ OpenEnv: Mock PFMS Portal
 
 <div align="center">
